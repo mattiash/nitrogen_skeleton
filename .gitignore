@@ -1,0 +1,6 @@
+*.dump
+deps/*
+scratch/*
+apps/*/ebin/*.app
+apps/*/ebin/*.beam
+*~
