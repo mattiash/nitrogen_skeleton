@@ -42,7 +42,7 @@ init([]) ->
     {ok, BindAddress} = application:get_env(bind_address),
     {ok, Port} = application:get_env(port),
     {ok, ServerName} = application:get_env(server_name),
-    {ok, DocRoot} = application:get_env(document_root),
+    DocRoot = docroot(),
 
     io:format("Starting Mochiweb Server (~s) on ~s:~p, root: '~s'~n", [ServerName, BindAddress, Port, DocRoot]),
 
@@ -58,7 +58,7 @@ init([]) ->
     {ok, { {one_for_one, 5, 10}, []} }.
 
 loop(Req) ->
-    {ok, DocRoot} = application:get_env(document_root),
+    DocRoot = docroot(),
     RequestBridge = simple_bridge:make_request(mochiweb_request_bridge, {Req, DocRoot}),
     ResponseBridge = simple_bridge:make_response(mochiweb_response_bridge, {Req, DocRoot}),
     nitrogen:init_request(RequestBridge, ResponseBridge),
@@ -70,3 +70,6 @@ loop(Req) ->
     nitrogen:handler(named_route_handler, routes()),
 
     nitrogen:run().
+
+docroot() ->
+    code:priv_dir(web) ++ "/static".

@@ -5,11 +5,11 @@ get-deps:
 
 compile:
 	./rebar compile
-	(cd static; rm -rf nitrogen; mkdir nitrogen; cp -r ../deps/nitrogen_core/www/* nitrogen)
+	(cd apps/web/priv/static; rm -rf nitrogen; mkdir nitrogen; cp -r ../../../../deps/nitrogen_core/www/* nitrogen)
 
 clean:
 	./rebar clean
-	(cd static; rm -rf nitrogen)
+	(cd apps/web/priv/static; rm -rf nitrogen)
 
 run:
 	erl -pa apps/*/ebin ./deps/*/ebin ./deps/*/include \

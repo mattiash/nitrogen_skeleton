@@ -3,7 +3,7 @@
 -compile(export_all).
             
 main() ->
-       common:assert_path( #template { file="./templates/grid.html" } ).
+       common:assert_path( #template { file=code:priv_dir(web) ++ "/templates/grid.html" } ).
 
 title() -> "Nitrogen Web Framework for Erlang".
 
