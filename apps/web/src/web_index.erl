@@ -3,17 +3,17 @@
 -compile(export_all).
             
 main() ->
-       common:assert_path( #template { file=code:priv_dir(web) ++ "/templates/grid.html" } ).
+       web_common:assert_path( "grid.html" ).
 
 title() -> "Nitrogen Web Framework for Erlang".
 
 layout() ->
     #container_12 { body=[
-        #grid_12 { class=header, body=common:header(index) },
+        #grid_12 { class=header, body=web_common:header(index) },
         #grid_clear {},
 
         #grid_12 { body="Welcome to Nitrogen" },
         #grid_clear {},
 
-        #grid_12 { body=common:footer() }
+        #grid_12 { body=web_common:footer() }
     ] }.

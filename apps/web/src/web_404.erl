@@ -5,7 +5,8 @@
 
 main() ->
     wf:status_code(404),
-    #template { file="./templates/404.html" }.
+    #template { file=filename:join([code:priv_dir(web),
+				    "templates", "404.html"]) }.
 
 path() ->
     RequestBridge = wf_context:request_bridge(),

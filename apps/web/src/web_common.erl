@@ -1,4 +1,4 @@
--module(common).
+-module(web_common).
 -include_lib ("nitrogen_core/include/wf.hrl").
 -compile(export_all).
 
@@ -19,7 +19,15 @@ footer() ->
         "
     ]}.
 
-assert_path( Elem ) ->
+assert_path( Str ) when is_list( Str ) ->
+    assert_path( #template { 
+       file=filename:join([code:priv_dir(web), 
+			   "templates", 
+			   Str
+			  ])
+});
+
+assert_path( Elem=#template {} ) ->
     case wf:path_info() of
         [] -> Elem;
         _ -> web_404:main()
