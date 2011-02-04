@@ -1,5 +1,5 @@
 %% -*- mode: nitrogen -*-
--module(nitrogen_website_sup).
+-module(web_sup).
 -behaviour(supervisor).
 -export([
     start_link/0,

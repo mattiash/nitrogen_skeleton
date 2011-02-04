@@ -1,4 +1,4 @@
--module(nitrogen_website_app).
+-module(web_app).
 -behaviour(application).
 -export([start/2, stop/1]).
 
@@ -7,7 +7,7 @@
 %% ===================================================================
 
 start(_StartType, _StartArgs) ->
-    nitrogen_website_sup:start_link().
+    web_sup:start_link().
 
 stop(_State) ->
     ok.
