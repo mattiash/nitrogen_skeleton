@@ -1,7 +1,7 @@
 {application, web, [
     {description,  "Web interface"},
     {vsn,          "1"},
-    {applications, [kernel, stdlib]},
+    {applications, [kernel, stdlib, myapp]},
     {registered, []},
     {mod, {web_app, []}},
     {env, [
