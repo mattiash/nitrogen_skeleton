@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Where is the erlctl directory?
+ERLCTL=../erlctl
+
+# Where is this application?
+APP=.
+
+ERL_LIBS=`echo $ERLCTL/lib/ $APP/apps/* $APP/deps/* | tr " " :` ../erlctl/bin/erlctl myapp $1
